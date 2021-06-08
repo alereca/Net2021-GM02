@@ -8,12 +8,12 @@ using System.Threading.Tasks;
 
 namespace Data.Database
 {
-    class AppContext: DbContext
+    class AcademyContext: DbContext
     {
         public DbSet<Usuario> Usuarios { get; set; }
         public DbSet<Especialidad> Especialidades { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder options) => 
-            options.UseSqlite(@"Data Source=C:\Users\aleja\OneDrive\Documentos\Net2021-GM02\TP2");
+            options.UseSqlite(@"Data Source=C:\Users\aleja\OneDrive\Documentos\Net2021-GM02\TP2\academia.db");
     }
 }
