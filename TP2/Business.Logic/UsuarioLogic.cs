@@ -8,28 +8,30 @@ using Data.Database;
 
 namespace Business.Logic
 {
-    public class UsuarioLogic : BusinessLogic
+    public class UsuarioLogic : InitializationLogic
     {
-        public UsuarioAdapter UsuarioData { get; set; }
+        private readonly UsuarioAdapter _usuarioData;
         public UsuarioLogic()
         {
-            UsuarioData =  new UsuarioAdapter();
+            _usuarioData =  new UsuarioAdapter();
         }
         public List<Usuario> GetAll()
         {
-            return UsuarioData.GetAll();
+            return _usuarioData.GetAll();
         }
+
         public Usuario GetOne(int id)
         {
-            return UsuarioData.GetOne(id);
+            return _usuarioData.GetOne(id);
         }
         public void Delete(int id)
         {
-            UsuarioData.Delete(id);
+            _usuarioData.Delete(id);
         }
         public void Save(Usuario usuario)
         {
-            UsuarioData.Save(usuario);
+            _usuarioData.Save(usuario);
         }
+
     }
 }

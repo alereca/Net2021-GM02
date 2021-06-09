@@ -1,7 +1,9 @@
 using Business.Entities;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Data.Database
 {
@@ -61,7 +63,12 @@ namespace Data.Database
 
         public List<Usuario> GetAll()
         {
-            return new List<Usuario>(Usuarios);
+            using (var db = new AcademyContext())
+            {
+                Microsoft.EntityFrameworkCore.DbSet<Usuario>? usuarios = db.Usuarios;
+                if (usuarios == null) return new List<Usuario>();
+                return usuarios.ToList();
+            }
         }
 
         public Business.Entities.Usuario GetOne(int ID)
