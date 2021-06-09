@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Data.Database
 {
-    public class UsuarioAdapter : Adapter
+    public class UsuarioAdapter
     {
         #region DatosEnMemoria
         // Esta región solo se usa en esta etapa donde los datos se mantienen en memoria.

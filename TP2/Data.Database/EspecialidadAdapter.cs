@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Data.Database
 {
-    public class EspecialidadAdapter : Adapter
+    public class EspecialidadAdapter
     {
         #region DatosEnMemoria
         // Esta región solo se usa en esta etapa donde los datos se mantienen en memoria.
