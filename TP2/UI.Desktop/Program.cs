@@ -16,7 +16,8 @@ namespace UI.Desktop
         [STAThread]
         static async Task Main()
         {
-            InitializationLogic.Initialize();
+            InitializationLogic initializationLogic = new();
+            initializationLogic.Initialize();
 
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();

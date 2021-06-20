@@ -13,7 +13,7 @@ namespace Data.Database
         /// <summary>
         /// Recrear Db y agregar datos semilla a usar en la fase de desarrollo
         /// </summary>
-        public static void SeedData()
+        public void SeedData()
         {
             using (var db = new AcademyContext())
             {

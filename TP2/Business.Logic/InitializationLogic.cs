@@ -9,9 +9,10 @@ namespace Business.Logic
 {
     public class InitializationLogic
     {
-        public static void Initialize()
+        public void Initialize()
         {
-            Seed.SeedData();
+            Seed seed = new();
+            seed.SeedData();
         }
     }
 }
