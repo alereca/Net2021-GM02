@@ -10,8 +10,17 @@ namespace Data.Database
 {
     public class Seed
     {
+        /// <summary>
+        /// Recrear Db y agregar datos semilla a usar en la fase de desarrollo
+        /// </summary>
         public static void SeedData()
         {
+            using (var db = new AcademyContext())
+            {
+                db.Database.EnsureDeleted();
+                db.Database.Migrate();
+            }
+
             var usuarios = new List<Usuario>()
             {
                 new()
