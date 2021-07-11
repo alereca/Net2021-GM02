@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data.SqlClient;
 using System.Text;
 
@@ -7,21 +8,19 @@ namespace Data.Database
 {
     public class Adapter
     {
-        //private SqlConnection sqlConnection = new SqlConnection("ConnectionString;");
+        private SqlConnection? _sqlConnection;
 
-        protected void OpenConnection()
+        public void OpenConnection()
         {
-            throw new Exception("Metodo no implementado");
+            string connString = ConfigurationManager.ConnectionStrings["ConnStringLocal"].ConnectionString;
+            _sqlConnection = new SqlConnection(connString);
+            _sqlConnection.Open();
         }
 
-        protected void CloseConnection()
+        public void CloseConnection()
         {
-            throw new Exception("Metodo no implementado");
-        }
-
-        protected SqlDataReader ExecuteReader(String commandText)
-        {
-            throw new Exception("Metodo no implementado");
+            _sqlConnection?.Close();
+            _sqlConnection = null;
         }
     }
 }

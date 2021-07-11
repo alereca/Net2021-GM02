@@ -24,14 +24,5 @@ namespace Business.Logic
         {
             return _usuarioData.GetOne(id);
         }
-        public void Delete(int id)
-        {
-            _usuarioData.Delete(id);
-        }
-        public void Save(Usuario usuario)
-        {
-            _usuarioData.Save(usuario);
-        }
-
     }
 }
