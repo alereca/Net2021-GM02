@@ -4,26 +4,33 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Data.Database;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace UI.Web
 {
     public class Startup
     {
+        private readonly IConfiguration config;
+
         public Startup(IConfiguration configuration)
         {
-            Configuration = configuration;
+            this.config = configuration;
         }
 
-        public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddDbContext<AcademyContext>(opt =>
+            {
+                opt.UseSqlServer(config.GetConnectionString("ConnStringLocal"));
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
