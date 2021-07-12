@@ -16,8 +16,7 @@ class AcademyContext: DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder options)
     {
-        string connString = ConfigurationManager.ConnectionStrings["ConnStringLocal"].ConnectionString;
-        options.UseSqlite(connString);
+        options.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=academia;Trusted_Connection=True;MultipleActiveResultSets=true");
     }
 }
 }
