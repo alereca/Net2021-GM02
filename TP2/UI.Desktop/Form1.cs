@@ -23,7 +23,7 @@ namespace UI.Desktop
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            lsBoxUsers.DataSource = _usuarioLogic.GetAll().Select(e => e.Nombre).ToList();
+            lsBoxUsers.DataSource = new List<string>() { _usuarioLogic.GetOne(1).Nombre };
         }
     }
 }

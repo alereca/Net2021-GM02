@@ -27,7 +27,7 @@ namespace Data.Database
             }
         }
 
-        public Business.Entities.Usuario GetOne(int id)
+        public Usuario GetOne(int id)
         {
             var usr = new Usuario();
 
@@ -40,12 +40,12 @@ namespace Data.Database
             if (drGetOne.Read())
             {
                 usr.ID = (int)drGetOne["ID"];
-                usr.Nombre = (string)drGetOne["NombreUsuario"];
-                usr.Clave = (string)drGetOne["Clave"];
+                usr.Nombre = drGetOne["NombreUsuario"].ToString();
+                usr.Clave = drGetOne["Clave"].ToString();
                 usr.Habilitado = (bool)drGetOne["Habilitado"];
-                usr.Nombre = (string)drGetOne["Nombre"];
-                usr.Apellido = (string)drGetOne["Apellido"];
-                usr.Email = (string)drGetOne["Email"];
+                usr.Nombre = drGetOne["Nombre"].ToString();
+                usr.Apellido = drGetOne["Apellido"].ToString();
+                usr.Email = drGetOne["Email"].ToString();
             }
             drGetOne.Close();
             sqlConnection.Close();
