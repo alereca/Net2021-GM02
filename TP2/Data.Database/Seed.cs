@@ -13,13 +13,11 @@ namespace Data.Database
         /// <summary>
         /// Recrear Db y agregar datos semilla a usar en la fase de desarrollo
         /// </summary>
-        public void SeedData()
+        public static void SeedData(AcademyContext context)
         {
-            using (var db = new AcademyContext())
-            {
-                db.Database.EnsureDeleted();
-                db.Database.Migrate();
-            }
+
+            context.Database.EnsureDeleted();
+            context.Database.Migrate();
 
             var usuarios = new List<Usuario>()
             {
@@ -33,11 +31,8 @@ namespace Data.Database
                 }
             };
 
-            using (var db = new AcademyContext())
-            {
-                db.AddRange(usuarios);
-                db.SaveChanges();
-            }
+            context.AddRange(usuarios);
+            context.SaveChanges();
         }
     }
 }
