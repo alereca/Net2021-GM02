@@ -11,10 +11,11 @@ namespace Business.Logic
     public class UsuarioLogic
     {
         private readonly UsuarioAdapter _usuarioData;
-        public UsuarioLogic()
+        public UsuarioLogic(UsuarioAdapter usuarioAdapter)
         {
-            _usuarioData =  new UsuarioAdapter();
+            _usuarioData = usuarioAdapter;
         }
+
         public List<Usuario> GetAll()
         {
             return _usuarioData.GetAll();
