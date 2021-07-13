@@ -11,20 +11,17 @@ namespace Data.Database
 {
     public class UsuarioAdapter
     {
+        private readonly AcademyContext _context;
         private Adapter _adapter;
-        public UsuarioAdapter()
+        public UsuarioAdapter(AcademyContext context)
         {
             _adapter = new Adapter();
+            _context = context;
         }
 
         public List<Usuario> GetAll()
         {
-            using (var db = new AcademyContext())
-            {
-                Microsoft.EntityFrameworkCore.DbSet<Usuario>? usuarios = db.Usuarios;
-                if (usuarios == null) return new List<Usuario>();
-                return usuarios.ToList();
-            }
+            return _context.Usuarios?.ToList() ?? new List<Usuario>();
         }
 
         public Usuario GetOne(int id)
